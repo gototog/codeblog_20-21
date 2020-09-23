@@ -49,7 +49,7 @@ Si on vous demande un provider, choisissez virtualbox
 Depuis le dossier homestead, faire vagrant up
 
 **Error**
-Si Check your Homestead.yaml file, the path to your private key does not exist.
+Si `Check your Homestead.yaml file, the path to your private key does not exist.`
 ssh-keygen -t rsa -C "you@homestead"
 
 
@@ -57,3 +57,6 @@ Installation du host
 Ouvrir notepad en tant qu'administrateur ouvrir le fichier
 C:\Windows\System32\drivers\etc\hosts 
 et rajouter 192.168.10.10  codeblog.localhost
+
+Allez dans le dossier homestead, faire vagrant ssh
+Puis allez dans le dossier `cd codeblog_20-21` et faites `composer install`
