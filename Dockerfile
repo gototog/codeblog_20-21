@@ -18,8 +18,6 @@ ADD docker/rootfs /
 
 ADD . /var/www
 
-ENV PERFORMANCE_OPTIM true
-
 FROM base as dev
 
 RUN apt-get -qqq update && DEBIAN_FRONTEND=noninteractive apt-get install -qqq -y \
