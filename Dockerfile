@@ -1,4 +1,4 @@
-FROM kibatic/symfony:7.3 as base
+FROM kibatic/symfony:7.4 as base
 
 RUN apt-get -qqq update && DEBIAN_FRONTEND=noninteractive apt-get install -qqq -y \
         vim \
@@ -8,9 +8,10 @@ RUN apt-get -qqq update && DEBIAN_FRONTEND=noninteractive apt-get install -qqq -
         git \
         gnupg2 \
         build-essential xorg libssl-dev libxrender-dev \
-        php7.3-curl \
-        php7.3-zip \
-        php7.3-pgsql && \
+        php7.4-curl \
+        php7.4-zip \
+        php7.4-mysql \
+        php7.4-pgsql && \
         apt-get clean && \
         rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
@@ -21,7 +22,7 @@ ADD . /var/www
 FROM base as dev
 
 RUN apt-get -qqq update && DEBIAN_FRONTEND=noninteractive apt-get install -qqq -y \
-        php7.3-xdebug && \
+        php7.4-xdebug && \
         apt-get clean && \
         rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
