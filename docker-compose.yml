@@ -1,0 +1,29 @@
+version: "3.4"
+
+services:
+    web:
+        build:
+            context: .
+            target: dev
+        volumes:
+            - /etc/localtime:/etc/localtime:ro
+
+    db:
+        image: mariadb:10.2.14
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: codeblog
+            MYSQL_USER: codeblog
+            MYSQL_PASSWORD: codeblog
+
+
+    mailcatcher:
+      image: tophfr/mailcatcher
+      labels:
+        - "traefik.port=80"
+
+    node:
+      image: node:12-stretch
+      working_dir: /app
+      volumes:
+          - .:/app
