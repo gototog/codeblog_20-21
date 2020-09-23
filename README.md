@@ -1,11 +1,14 @@
-
+```bash
+git clone https://github.com/gototog/codeblog_20-21
+```
 Liens
 ==========
-Slides https://slides.com/gotorahoutan/epsi-symfony
-Repository https://github.com/gototog/codeblog_19-20/
-Doc Symfony https://symfony.com/doc/current/index.html
-Doc Twig https://twig.symfony.com/doc/2.x/#reference
-Doc doctrine https://www.doctrine-project.org/projects/doctrine-orm/en/2.6/reference/query-builder.html
+  * Slides https://slides.com/gotorahoutan/epsi-symfony  
+  * Repository https://github.com/gototog/codeblog_20-21/  
+  * Doc Symfony https://symfony.com/doc/current/index.html  
+  * Doc Twig https://twig.symfony.com/doc/2.x/#reference  
+  * Doc doctrine https://www.doctrine-project.org/projects/doctrine-orm/en/2.6/reference/query-builder.html  
+
 Installation
 ==========
 
