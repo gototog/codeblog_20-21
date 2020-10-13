@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ArticleRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=ArticleRepository::class)
@@ -18,11 +19,14 @@ class Article
     private $id;
 
     /**
+     * @Assert\NotBlank
+     * @Assert\Length(min=3)
      * @ORM\Column(type="string", length=255)
      */
     private $title;
 
     /**
+     * @Assert\Length(min=10)
      * @ORM\Column(type="text", nullable=true)
      */
     private $content;
@@ -33,6 +37,7 @@ class Article
     private $createdAt;
 
     /**
+     * @Assert\NotNull()
      * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="articles")
      */
     private $category;
@@ -88,5 +93,10 @@ class Article
         $this->category = $category;
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return (string) $this->title;
     }
 }

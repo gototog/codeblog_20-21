@@ -1,0 +1,17 @@
+{% extends 'base_home.html.twig' %}
+
+{% block body %}
+    <h1>{{ article.title }}</h1>
+    <div>
+        <small class="text-muted">{{ article.createdAt ? article.createdAt|date('Y-m-d H:i') : '' }}</small>
+
+        | Catégorie <strong>{{ article.category }}</strong>
+    </div>
+    <p>
+        {{ article.content|raw }}
+    </p>
+
+    <a class="btn btn-primary" href="{{ path('article_edit', {'id': article.id}) }}">edit</a>
+
+    {{ include('article/_delete_form.html.twig') }}
+{% endblock %}
