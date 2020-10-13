@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Entity\Article;
+use App\Entity\Category;
 
 class HomepageController extends AbstractController
 {
@@ -12,8 +14,14 @@ class HomepageController extends AbstractController
      */
     public function homepage()
     {
+        $categories = $this->getDoctrine()
+            ->getRepository(Category::class)->findAll();
+        $article = $this->getDoctrine()
+            ->getRepository(Article::class)->findOneBy([]);
+
         return $this->render('base_home.html.twig', [
-            'taVariableTwig' => $taVariablePhp =null,
+            'categories' => $categories,
+            'lastArticle' => $article,
         ]);
     }
 }

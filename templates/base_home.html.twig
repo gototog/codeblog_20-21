@@ -135,17 +135,27 @@
                 <div class="post-preview">
                     <a href="#TODO">
                         <h4 class="">
-                            Exemple de post
+                            {{ lastArticle.title }}
                         </h4>
                         <h5 class="post-subtitle">
-                            L'intelligent est un idiot qui a réussi.
+                            {{ lastArticle.content }}
                         </h5>
                     </a>
                     <p class="post-meta">Posted by
                         <a href="#TODO">Renaud</a>
-                        le 23/09/2020</p>
+                        le
+                        {{ lastArticle.createdAt|date('d M Y') }}</p>
                 </div>
 
+                <div>
+                    {% for category in categories %}
+                        <div>{{ category.name }} ({{ category.articles|length }})</div>
+
+                        {% for article in category.articles %}
+                            {{ article.title }}
+                        {% endfor %}
+                    {% endfor %}
+                </div>
 
                 <!-- Pager -->
                 <div class="clearfix">
