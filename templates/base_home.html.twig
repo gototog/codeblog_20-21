@@ -129,6 +129,25 @@
                             </li>
                         </ul>
                     </div>
+                    <h4>L'exam :o</h4>
+                    <p>
+                        Remplacer les liens du menu pour qu'ils pointent sur les bonnes pages <em>/4pt</em>
+                        <br><br>
+                        Enlever le champ Created At des formulaires de création/modification d'article
+                        <em>/1pt</em>
+                        <br><br>
+                        Générer le CRUD des catégories via la commande <code>bin/console make:crud</code>  <em>/2pt</em><br>
+                        - Rajouter le lien dans le menu admin -> Catégories<em>/1pt</em><br>
+                        - inclure les pages du crud dans le design existant <em>/2pt</em><br>
+                        - Ajouter une contrainte sur le formulaire Catégorie: Lorsqu'on créé ou modifie une catégorie, le nom doit d'être d'au moins 4 caractères <em>/2pt</em>
+                        <br><br>
+                        Lorsque j'accède à la page category_show (par exemple /category/1) j'aimerai voir la liste des articles de cette catégorie <em>/5pt</em>
+                        <br><br>
+                        Ordonner la liste des articles de la page article_index par ordre décroissant (requete sql déjà écrite) <em>/1pt</em>
+                        <br><br>
+                        Sécuriser la page category_delete pour n'être accessible que par l'admin <em>/2pt</em>
+                        <br><br>
+                    </p>
                 </div>
             </div>
             <div class="col-lg-4 col-md-10">
@@ -152,14 +171,14 @@
                         <div>{{ category.name }} ({{ category.articles|length }})</div>
 
                         {% for article in category.articles %}
-                            {{ article.title }}
+                           <div class="pl-3">{{ article.title }}</div>
                         {% endfor %}
                     {% endfor %}
                 </div>
 
                 <!-- Pager -->
                 <div class="clearfix">
-                    <a class="btn btn-primary float-right" href="#TODO">Older Posts &rarr;</a>
+                    <a class="btn btn-primary float-right" href="#TODO">Liste des articles</a>
                 </div>
             </div>
     </div>
