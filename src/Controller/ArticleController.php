@@ -22,7 +22,7 @@ class ArticleController extends AbstractController
      */
     public function index(ArticleRepository $articleRepository): Response
     {
-        $articles = $articleRepository->findAll();
+        $articles = $articleRepository->findLastArticles(100);
         return $this->render('article/index.html.twig', [
             'articles' => $articles,
         ]);

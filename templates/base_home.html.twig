@@ -31,7 +31,7 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark" id="mainNav">
     <div class="container">
-        <a class="navbar-brand" href="#TODO">CodeBlog</a>
+        <a class="navbar-brand" href="{{ path('homepage') }}">CodeBlog</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                 data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -43,23 +43,25 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ path('homepage') }}">Home</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Admin
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#TODO">Catégories</a>
-                        <a class="dropdown-item" href="#TODO">Articles</a>
-                    </div>
-                </li>
+{#                {% if is_granted('ROLE_ADMIN')  %}#}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Admin
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ path('category_index') }}">Catégories</a>
+                            <a class="dropdown-item" href="{{ path('article_index') }}">Articles</a>
+                        </div>
+                    </li>
+{#                {% endif %}#}
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Hello
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{ path('hello_world') }}">Hello</a>
-                        <a class="dropdown-item" href="#TODO">Hello Prénom</a>
-                        <a class="dropdown-item" href="#TODO">Hello 4</a>
+                        <a class="dropdown-item" href="{{ path('hello_firstname', {'firstname':'ROBERT'}) }}">Hello Prénom</a>
+                        <a class="dropdown-item" href="{{ path('hello_number', {'number':1000}) }}">Hello 4</a>
                     </div>
                 </li>
             </ul>
@@ -76,8 +78,8 @@
         <div class="row">
             <div class="col-lg-8 col-md-10 mx-auto">
                 <div class="site-heading">
-                    <h1>{% block title %}Titre{% endblock %}</h1>
-                    <span class="subheading">{% block subtitle %}Sous titre{% endblock %}</span>
+                    <h1>{% block title %}Site corrigé{% endblock %}</h1>
+                    <span class="subheading">{% block subtitle %}Le site terminé :x{% endblock %}</span>
                 </div>
             </div>
         </div>
@@ -136,7 +138,7 @@
                         Enlever le champ Created At des formulaires de création/modification d'article
                         <em>/1pt</em>
                         <br><br>
-                        Générer le CRUD des catégories via la commande <code>bin/console make:crud</code>  <em>/2pt</em><br>
+                        Générer le CRUD des catégories via la commande <code>php bin/console make:crud</code>  <em>/2pt</em><br>
                         - Rajouter le lien dans le menu admin -> Catégories<em>/1pt</em><br>
                         - inclure les pages du crud dans le design existant <em>/2pt</em><br>
                         - Ajouter une contrainte sur le formulaire Catégorie: Lorsqu'on créé ou modifie une catégorie, le nom doit d'être d'au moins 4 caractères <em>/2pt</em>
@@ -168,10 +170,12 @@
 
                 <div>
                     {% for category in categories %}
-                        <div>{{ category.name }} ({{ category.articles|length }})</div>
+                        <div><a href="{{ path('category_show', {'id': category.id}) }}">{{ category.name }}</a>
+                            ({{ category.articles|length }})</div>
 
                         {% for article in category.articles %}
-                           <div class="pl-3">{{ article.title }}</div>
+                           <div class="pl-3">
+                               <a href="{{ path('article_show', {'id': article.id}) }}">{{ article.title }}</a></div>
                         {% endfor %}
                     {% endfor %}
                 </div>
